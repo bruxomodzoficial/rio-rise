@@ -8,136 +8,117 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-}
+*{margin:0;padding:0;box-sizing:border-box}
 
 body{
   font-family:'Poppins',sans-serif;
-  height:100vh;
+  background:linear-gradient(135deg,#0f0f0f,#1a1a1a);
+  color:#fff;
   display:flex;
   justify-content:center;
   align-items:center;
-  background:linear-gradient(135deg,#0a0a0a,#1f1f1f);
+  height:100vh;
 }
 
 /* CARD */
 .card{
-  width:380px;
-  padding:35px;
+  width:360px;
+  background:#181818;
+  padding:40px;
   border-radius:20px;
-  backdrop-filter:blur(15px);
-  background:rgba(255,255,255,0.05);
-  border:1px solid rgba(255,255,255,0.08);
-  box-shadow:0 20px 60px rgba(0,0,0,0.8);
   text-align:center;
-  animation:fade 0.8s ease;
+  box-shadow:0 20px 60px rgba(0,0,0,.9);
+  animation:fade 1s ease;
 }
 
 @keyframes fade{
-  from{opacity:0; transform:translateY(20px);}
-  to{opacity:1; transform:translateY(0);}
+  from{opacity:0;transform:translateY(30px)}
+  to{opacity:1;transform:translateY(0)}
 }
 
 h1{
+  font-size:22px;
   color:#ff0000;
-  font-size:24px;
-  margin-bottom:8px;
+  margin-bottom:10px;
 }
 
 p{
-  color:#aaa;
   font-size:14px;
+  color:#aaa;
   margin-bottom:25px;
 }
 
-/* PROGRESS */
+/* BARRA */
 #progress{
-  height:8px;
-  background:#222;
-  border-radius:20px;
+  height:6px;
+  background:#333;
+  border-radius:10px;
   overflow:hidden;
-  margin-bottom:25px;
+  margin-bottom:20px;
 }
 
 #bar{
   height:100%;
-  width:0%;
+  width:0;
   background:linear-gradient(90deg,#ff0000,#ff4d4d);
-  transition:0.4s;
+  transition:.5s;
 }
 
 /* BOTÕES */
 .btn{
   width:100%;
   padding:14px;
-  margin-bottom:12px;
   border-radius:12px;
-  text-decoration:none;
-  color:#fff;
+  margin-bottom:12px;
+  font-size:15px;
+  cursor:pointer;
   display:flex;
   align-items:center;
   justify-content:center;
   gap:8px;
-  font-size:15px;
-  transition:0.25s;
-  position:relative;
-  overflow:hidden;
-}
-
-.btn::after{
-  content:"";
-  position:absolute;
-  width:0;
-  height:100%;
-  background:rgba(255,255,255,0.1);
-  left:0;
-  top:0;
-  transition:0.3s;
-}
-
-.btn:hover::after{
-  width:100%;
+  text-decoration:none;
+  color:#fff;
+  transition:.3s;
 }
 
 .btn:hover{
   transform:translateY(-2px);
+  box-shadow:0 10px 20px rgba(0,0,0,.5);
 }
 
-/* CORES */
 .subscribe{background:#ff0000;}
-.secondary{background:#ff3c3c;}
+.secondary{background:#ff4444;}
 .like{background:#0099ff;}
-.comment{background:#00cc66; color:#000;}
+.comment{background:#00cc66;color:#000;}
+.whatsapp{background:#25D366;color:#000;}
 
 .done{
   background:#22c55e !important;
+  animation:pop .3s ease;
+}
+
+@keyframes pop{
+  from{transform:scale(0.9)}
+  to{transform:scale(1)}
 }
 
 /* LIBERADO */
 #liberado{
   display:none;
   margin-top:20px;
-  animation:fade 0.5s ease;
-}
-
-#liberado p{
-  color:#22c55e;
-  font-weight:600;
-  margin-bottom:10px;
+  animation:fade 0.8s ease;
 }
 
 #liberado a{
   display:inline-block;
-  padding:14px 20px;
-  border-radius:12px;
   background:linear-gradient(90deg,#ffd000,#ffea00);
   color:#000;
-  font-weight:600;
+  padding:14px 20px;
+  border-radius:12px;
   text-decoration:none;
-  transition:0.3s;
+  font-weight:600;
+  margin-top:10px;
+  transition:.3s;
 }
 
 #liberado a:hover{
@@ -150,10 +131,11 @@ p{
 
 <div class="card">
   <h1>🔒 Desbloquear Conteúdo</h1>
-  <p>Complete todas as ações para liberar acesso</p>
+  <p>Complete todas as ações abaixo</p>
 
   <div id="progress"><div id="bar"></div></div>
 
+  <!-- CANAIS -->
   <a id="b1" class="btn subscribe" href="https://www.youtube.com/@isacmodstv" target="_blank" onclick="marcar('b1')">
     📺 Canal Principal
   </a>
@@ -162,18 +144,25 @@ p{
     📺 Canal Secundário
   </a>
 
-  <a id="b3" class="btn like" href="https://youtu.be/1d62jWMsaWA" target="_blank" onclick="marcar('b3')">
+  <!-- VÍDEO -->
+  <a id="b3" class="btn like" href="https://youtu.be/Bc7--5-dfpk?si=FEWE6S08WXnmNc7R" target="_blank" onclick="marcar('b3')">
     👍 Curtir Vídeo
   </a>
 
-  <a id="b4" class="btn comment" href="https://youtu.be/1d62jWMsaWA" target="_blank" onclick="marcar('b4')">
-    💬 Comentar
+  <a id="b4" class="btn comment" href="https://youtu.be/Bc7--5-dfpk?si=FEWE6S08WXnmNc7R" target="_blank" onclick="marcar('b4')">
+    💬 Comentar Vídeo
   </a>
 
+  <!-- WHATSAPP -->
+  <a id="b5" class="btn whatsapp" href="https://chat.whatsapp.com/Bye9CWnyog5CggS0y6RxXA?mode=gi_t" target="_blank" onclick="marcar('b5')">
+    🟢 Entrar no Grupo
+  </a>
+
+  <!-- LIBERAÇÃO -->
   <div id="liberado">
-    <p>✅ Acesso liberado</p>
-    <a href="https://mega.nz/file/ovJkQbKD#yMwldi0UjXLOZSKkXYDkgNDikwlZAI1az8PV7BQ63yA" target="_blank">
-      ENTRAR NO SITE
+    <p>✅ Acesso liberado com sucesso</p>
+    <a href="https://mega.nz/file/86BwFIzS#7vEKUAAJ1916OfhRdbAPHZ-kT9-8-vuVPh7sAHCqYGM" target="_blank">
+      🚀 ACESSAR AGORA
     </a>
   </div>
 </div>
@@ -182,10 +171,12 @@ p{
 let total = 0;
 
 function atualizar(){
-  document.getElementById('bar').style.width = (total*25)+'%';
+  document.getElementById('bar').style.width = (total*20)+'%';
 
-  if(total === 4){
-    document.getElementById('liberado').style.display = 'block';
+  if(total === 5){
+    setTimeout(()=>{
+      document.getElementById('liberado').style.display = 'block';
+    }, 600);
   }
 }
 
