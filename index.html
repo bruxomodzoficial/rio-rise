@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Desbloquear Conteúdo</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  font-family:'Poppins',sans-serif;
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background:linear-gradient(135deg,#0a0a0a,#1f1f1f);
+}
+
+/* CARD */
+.card{
+  width:380px;
+  padding:35px;
+  border-radius:20px;
+  backdrop-filter:blur(15px);
+  background:rgba(255,255,255,0.05);
+  border:1px solid rgba(255,255,255,0.08);
+  box-shadow:0 20px 60px rgba(0,0,0,0.8);
+  text-align:center;
+  animation:fade 0.8s ease;
+}
+
+@keyframes fade{
+  from{opacity:0; transform:translateY(20px);}
+  to{opacity:1; transform:translateY(0);}
+}
+
+h1{
+  color:#ff0000;
+  font-size:24px;
+  margin-bottom:8px;
+}
+
+p{
+  color:#aaa;
+  font-size:14px;
+  margin-bottom:25px;
+}
+
+/* PROGRESS */
+#progress{
+  height:8px;
+  background:#222;
+  border-radius:20px;
+  overflow:hidden;
+  margin-bottom:25px;
+}
+
+#bar{
+  height:100%;
+  width:0%;
+  background:linear-gradient(90deg,#ff0000,#ff4d4d);
+  transition:0.4s;
+}
+
+/* BOTÕES */
+.btn{
+  width:100%;
+  padding:14px;
+  margin-bottom:12px;
+  border-radius:12px;
+  text-decoration:none;
+  color:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  font-size:15px;
+  transition:0.25s;
+  position:relative;
+  overflow:hidden;
+}
+
+.btn::after{
+  content:"";
+  position:absolute;
+  width:0;
+  height:100%;
+  background:rgba(255,255,255,0.1);
+  left:0;
+  top:0;
+  transition:0.3s;
+}
+
+.btn:hover::after{
+  width:100%;
+}
+
+.btn:hover{
+  transform:translateY(-2px);
+}
+
+/* CORES */
+.subscribe{background:#ff0000;}
+.secondary{background:#ff3c3c;}
+.like{background:#0099ff;}
+.comment{background:#00cc66; color:#000;}
+
+.done{
+  background:#22c55e !important;
+}
+
+/* LIBERADO */
+#liberado{
+  display:none;
+  margin-top:20px;
+  animation:fade 0.5s ease;
+}
+
+#liberado p{
+  color:#22c55e;
+  font-weight:600;
+  margin-bottom:10px;
+}
+
+#liberado a{
+  display:inline-block;
+  padding:14px 20px;
+  border-radius:12px;
+  background:linear-gradient(90deg,#ffd000,#ffea00);
+  color:#000;
+  font-weight:600;
+  text-decoration:none;
+  transition:0.3s;
+}
+
+#liberado a:hover{
+  transform:scale(1.05);
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+  <h1>🔒 Desbloquear Conteúdo</h1>
+  <p>Complete todas as ações para liberar acesso</p>
+
+  <div id="progress"><div id="bar"></div></div>
+
+  <a id="b1" class="btn subscribe" href="https://www.youtube.com/@isacmodstv" target="_blank" onclick="marcar('b1')">
+    📺 Canal Principal
+  </a>
+
+  <a id="b2" class="btn secondary" href="https://www.youtube.com/@bruxomodzofc" target="_blank" onclick="marcar('b2')">
+    📺 Canal Secundário
+  </a>
+
+  <a id="b3" class="btn like" href="https://youtu.be/1d62jWMsaWA" target="_blank" onclick="marcar('b3')">
+    👍 Curtir Vídeo
+  </a>
+
+  <a id="b4" class="btn comment" href="https://youtu.be/1d62jWMsaWA" target="_blank" onclick="marcar('b4')">
+    💬 Comentar
+  </a>
+
+  <div id="liberado">
+    <p>✅ Acesso liberado</p>
+    <a href="https://mega.nz/file/ovJkQbKD#yMwldi0UjXLOZSKkXYDkgNDikwlZAI1az8PV7BQ63yA" target="_blank">
+      ENTRAR NO SITE
+    </a>
+  </div>
+</div>
+
+<script>
+let total = 0;
+
+function atualizar(){
+  document.getElementById('bar').style.width = (total*25)+'%';
+
+  if(total === 4){
+    document.getElementById('liberado').style.display = 'block';
+  }
+}
+
+function marcar(id){
+  const el = document.getElementById(id);
+
+  if(!el.classList.contains('done')){
+    total++;
+    el.classList.add('done');
+    atualizar();
+  }
+}
+</script>
+
+</body>
+</html>
